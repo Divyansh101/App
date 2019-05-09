@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardSection, Header } from './common';
-import { Text, View } from 'react-native';
+import { Text, View, FlatList} from 'react-native';
 //import Carousel from 'react-native-banner-carousel';
 import { connect } from 'react-redux';
 import { apiCall } from '../actions/homePageActions';
@@ -13,8 +13,21 @@ render() {
 
     return (
         <View>
-            <Header headerText = { 'Home' }/>
-            <Text>{this.props.data[0].data[0].title}</Text>
+            <Header headerText = {'home'} />
+            <FlatList
+            data = {this.props.data}
+            renderItem = {
+                ({item}) => <FlatList
+                data = {item.data}
+                horizontal
+                renderItem = {
+                    ({item}) => <Text>{ item.title }</Text>
+                } 
+                keyExtractor = { item  => item.id  }
+                />
+            } 
+            keyExtractor = { item  => item.id  }
+            />
         </View>
         )   
     }
