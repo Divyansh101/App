@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Card, CardSection, Header } from './common';
-import { Text, View, FlatList} from 'react-native';
+import { Text, View, ScrollView, Image} from 'react-native';
 //import Carousel from 'react-native-banner-carousel';
 import { connect } from 'react-redux';
 import { apiCall } from '../actions/homePageActions';
 
 class HomePage extends Component {
     componentDidMount() {
+
         {this.props.apiCall()}
     }
 render() {
@@ -14,20 +15,12 @@ render() {
     return (
         <View>
             <Header headerText = {'home'} />
-            <FlatList
-            data = {this.props.data}
-            renderItem = {
-                ({item}) => <FlatList
-                data = {item.data}
-                horizontal
-                renderItem = {
-                    ({item}) => <Text>{ item.title }</Text>
-                } 
-                keyExtractor = { item  => item.id  }
-                />
-            } 
-            keyExtractor = { item  => item.id  }
-            />
+            {this.props.data ? this.props.data[0].data.map(item => 
+            <ScrollView style = {styles.scrollViewStyles} 
+                                directionalLockEnabled={false}
+                                horizontal={true}  >
+                <Image source={{uri:item.imageUrl  , width: 200, height: 200 } } />
+            </ScrollView>)  : null}
         </View>
         )   
     }
@@ -37,4 +30,10 @@ const mapStateToProps = (state) => {
     return { data: state.Homepage.data };
 }
 
+const styles =  {
+    scrollViewStyles : {
+        height: 80,
+        flexDirection: 'row'
+    }
+}
 export default connect( mapStateToProps, { apiCall } )(HomePage);
