@@ -7,19 +7,25 @@ const HomePageSection = (props) => {
     props.item.data.map(item => {
         views.push(<Image style = { styles.sectionStyle }  source = {{ uri: item.imageUrl, width: 300, height: 130 }} />)
     })
+    const renderHeading = () => {
+        if(props.item.type === "masthead")
+        return null 
+
+        return (<View style = {{flexDirection: 'row'}}>
+                    <Text style = {[styles.textStyle, {width: '77%' , fontSize : 19}]}  >
+                        { props.item.title }
+                    </Text>
+                    <View>
+                        <TouchableOpacity >
+                            <Text style = {styles.textStyle} >See all</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>);
+    }
 
     return(
         <View>
-            <View style = {{flexDirection: 'row'}}>
-                <Text style = {[styles.textStyle, {width: '77%' , fontSize : 19}]}  >
-                    {props.item.title}
-                </Text>
-                <View>
-                    <TouchableOpacity >
-                        <Text style = {styles.textStyle} >See all</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+            {renderHeading()}
             <ScrollView horizontal>
                 {views}
             </ScrollView>
@@ -40,6 +46,9 @@ const styles = {
         marginBottom: 20,
         fontWeight: "600",
         marginLeft: 13
+    },
+    scrollViewStyle : {
+        marginTop: 30
     }
 }
 export default HomePageSection;

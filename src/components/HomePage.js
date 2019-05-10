@@ -15,7 +15,7 @@ render() {
 
     return (
         <View>
-            <Header headerText = {'home'} />
+            <Header headerText = {'Home'} />
             {this.props.data ? this.props.data.map(item =>  <HomePageSection item = {item} /> ): null}
         </View>
         )   
