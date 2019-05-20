@@ -3,6 +3,8 @@ import { Router, Scene, Actions } from 'react-native-router-flux';
 import HomePage from './components/HomePage';
 import DetailsPage from './components/DetailsPage';
 import VideoPage from './components/VideoPage';
+import seeAllPage from './components/seeAllPage';
+import videoPagetwo from './components/videoPagetwo';
 
 
 
@@ -31,7 +33,12 @@ const RouterComponent = () => {
                     />
                     <Scene
                         key = "seeAllPage"
-                        component = {  }
+                        component = { seeAllPage }
+                        title = ""
+                    />
+                    <Scene
+                        key = "videoPageTwo"
+                        component = { videoPagetwo }
                         title = ""
                     />
             </Scene>

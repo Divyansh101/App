@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class SeeAll extends Component {
     onButtonPress(){
-        Actions.seeAllPage({ data: this.props.type })
+        Actions.seeAllPage({ data: this.props.data })
     }
 
     render(){
         return(
-            <TouchableOpacity onPress = {this.onButtonPress(this)} >
+            <TouchableOpacity onPress = {this.onButtonPress.bind(this)} >
                 <Text style = {styles.textStyle} >See All</Text>
             </TouchableOpacity>
         )

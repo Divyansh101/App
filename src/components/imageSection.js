@@ -8,6 +8,7 @@ class ImageSection extends Component{
     }
 
     onPressButtonMovies(){
+        console.log(this.props)
         Actions.videoPage({data: this.props });
     }
 

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, FlatList} from 'react-native';
+import { View, Text, Image, ScrollView, FlatList, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import { renderEpisodes } from '../actions/detailsPageActions';
+import { Actions } from 'react-native-router-flux';
 
 class detailsPage extends Component{
 
     componentDidMount(){
         this.props.renderEpisodes()
+    }
+    onPressButton(){
+        Actions.videoPage({ data: this.props.data})
     }
 
     // populateData() {
@@ -59,13 +63,17 @@ class detailsPage extends Component{
                     data = {this.props.episodes}
                     renderItem = { (item) =>
                         <View style = {{ flexDirection: 'row' }} >
+                            <TouchableOpacity onPress = { this.onPressButton.bind(this)}>
                             <Image 
                                 style = {styles.episodesImageStyle}
                                 source = {{uri: item.item.imageUrl, width: 190, height: 90}} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress = { this.onPressButton.bind(this)}>
                             <View>
                                 <Text style = { styles.episodeTextStyle } >{ item.item.title }</Text>  
                                 <Text style = {{fontFamily: 'Archivo-Medium', marginTop: 7, marginLeft: 10}} >{ item.item.date }</Text>  
                             </View>
+                            </TouchableOpacity>
                         </View>} 
                     keyExtractor = { (item)  => item.id }
                 />

@@ -18,7 +18,7 @@ const HomePageSection = (props) => {
             </Text>
             <View>
                 <TouchableOpacity>
-                    <SeeAll type = {props.item.type} />
+                    <SeeAll data = {props.data} />
                 </TouchableOpacity>
             </View>
         </View>);
