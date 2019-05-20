@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 //import {Fonts} from '../utils/Fonts'
 import ImageSection from './imageSection';
-
+import SeeAll from './SeeAll';
 const HomePageSection = (props) => {
     let views= []
     props.item.data.map(item => {
@@ -17,8 +17,8 @@ const HomePageSection = (props) => {
                 { props.item.title }
             </Text>
             <View>
-                <TouchableOpacity >
-                    <Text style = {styles.textStyle} >See all</Text>
+                <TouchableOpacity>
+                    <SeeAll type = {props.item.type} />
                 </TouchableOpacity>
             </View>
         </View>);

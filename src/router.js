@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Scene, Actions } from 'react-native-router-flux';
 import HomePage from './components/HomePage';
 import DetailsPage from './components/DetailsPage';
+import VideoPage from './components/VideoPage';
 
 
 
@@ -22,6 +23,16 @@ const RouterComponent = () => {
                         component = { DetailsPage } 
                         title = "" 
 
+                    />
+                    <Scene
+                        key = "videoPage"
+                        component = { VideoPage }
+                        title = ""
+                    />
+                    <Scene
+                        key = "seeAllPage"
+                        component = {  }
+                        title = ""
                     />
             </Scene>
         </Router>
