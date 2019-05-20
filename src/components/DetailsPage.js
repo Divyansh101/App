@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions, FlatList } from 'react-native';
+import { View, Text, Image, ScrollView, FlatList} from 'react-native';
 import { connect } from 'react-redux';
 import { renderEpisodes } from '../actions/detailsPageActions';
 
@@ -48,21 +48,33 @@ class detailsPage extends Component{
 
     render(){
         return(
-            <View>
-            <Image source = {{uri: this.props.data.imageUrl, width: 350 , height:150 }} />
-            <Text>{ this.props.data.title }</Text>
-            <Text>{ this.props.data.genre }</Text>
-            <Text>{ this.props.data.description }</Text>
-            <Text>Episodes</Text>
-            <Text style = {{marginLeft: 14, marginTop: 10}}>{this.props.episodes? this.props.episodes[0].title : null }</Text>
-        </View> 
+            <ScrollView>
+                <Image style = {styles.imageStyle} source = {{uri: this.props.data.item.imageUrl, width: 350 , height:150 }} />
+                <Text style = {styles.titleStyle} >{ this.props.data.item.title }</Text>
+                <Text style = {styles.genreStyle} >{ this.props.data.item.genre }</Text>
+                <Text style = {styles.descStyle} >{ this.props.data.item.description }</Text>
+                <Text style = {styles.episodeStyle} >Episodes</Text>
+                <FlatList 
+                    style = {{marginLeft: 14, marginTop: 10, marginRight: 14}} 
+                    data = {this.props.episodes}
+                    renderItem = { (item) =>
+                        <View>
+                        <Image 
+                            style = {styles.episodesimageStyle}
+                            source = {{uri: item.item.imageUrl, width: 190, height: 90}} />
+                        <Text>{ item.item.title }</Text>  
+                        </View>} 
+                />
+            </ScrollView> 
         )
     }
 }
 
 const styles = {
     imageStyle: { 
-        borderRadius: 4
+        borderRadius: 4,
+        marginTop: 92,
+        alignSelf: 'center'
     },
 
     titleStyle: {
@@ -91,8 +103,11 @@ const styles = {
         marginTop: 10,
         marginLeft: 14
 
-    }
+    },
+    episodesImage: {
 
+    }
+    
 }
 
 const mapStateToProps = state => {
