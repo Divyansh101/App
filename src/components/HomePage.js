@@ -14,10 +14,9 @@ class HomePage extends Component {
 render() {
 
     return (
-        <View>
-            <Header headerText = {'Home'} />
-            {this.props.data ? this.props.data.map(item =>  <HomePageSection item = {item} /> ): null}
-        </View>
+            <ScrollView style = {{backgroundColor: '#fff'}} >
+                {this.props.data ? this.props.data.map(item =>  <HomePageSection key={ item.id } item = {item} /> ): null}
+            </ScrollView>
         )   
     }
 };

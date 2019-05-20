@@ -17,13 +17,14 @@ const styles = {
     viewStyle: {
         backgroundColor: '#F8F8F8',
         alignItems: 'center',
-        height: 80,
+        height: 70,
         shadowColor: '#000000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.2,
         elevation: 2
     }, 
     textStyle: {
+        fontFamily: "Archivo-Medium",
         fontSize: 18,
         marginTop: 45
     }
