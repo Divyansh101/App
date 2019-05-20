@@ -48,7 +48,7 @@ class detailsPage extends Component{
 
     render(){
         return(
-            <ScrollView>
+            <ScrollView style = {{backgroundColor : '#fff'}} >
                 <Image style = {styles.imageStyle} source = {{uri: this.props.data.item.imageUrl, width: 350 , height:150 }} />
                 <Text style = {styles.titleStyle} >{ this.props.data.item.title }</Text>
                 <Text style = {styles.genreStyle} >{ this.props.data.item.genre }</Text>
@@ -58,12 +58,16 @@ class detailsPage extends Component{
                     style = {{marginLeft: 14, marginTop: 10, marginRight: 14}} 
                     data = {this.props.episodes}
                     renderItem = { (item) =>
-                        <View>
-                        <Image 
-                            style = {styles.episodesimageStyle}
-                            source = {{uri: item.item.imageUrl, width: 190, height: 90}} />
-                        <Text>{ item.item.title }</Text>  
+                        <View style = {{ flexDirection: 'row' }} >
+                            <Image 
+                                style = {styles.episodesImageStyle}
+                                source = {{uri: item.item.imageUrl, width: 190, height: 90}} />
+                            <View>
+                                <Text style = { styles.episodeTextStyle } >{ item.item.title }</Text>  
+                                <Text style = {{fontFamily: 'Archivo-Medium', marginTop: 7, marginLeft: 10}} >{ item.item.date }</Text>  
+                            </View>
                         </View>} 
+                    keyExtractor = { (item)  => item.id }
                 />
             </ScrollView> 
         )
@@ -104,10 +108,17 @@ const styles = {
         marginLeft: 14
 
     },
-    episodesImage: {
-
+    episodesImageStyle: {
+        borderRadius: 4,
+        marginBottom: 10
+    },
+    episodeTextStyle: {
+        fontFamily: 'Archivo-Medium',
+        fontSize: 16,
+        marginTop: 20,
+        marginLeft: 10
     }
-    
+
 }
 
 const mapStateToProps = state => {
