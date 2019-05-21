@@ -18,7 +18,7 @@ class VideoPagetwo extends Component {
         {{  width: 375,
             height: 190} }>
             <Video 
-            source={{uri: this.props.data.hlsUrl}}   // Can be a URL or a local file.                                
+            source={{uri: this.props.item.hlsUrl}}   // Can be a URL or a local file.                                
             onBuffer={this.onBuffer}                // Callback when remote video is buffering
             onError={this.videoError}               // Callback when video cannot be loaded
             style = {styles.backgroundVideo}
@@ -26,11 +26,12 @@ class VideoPagetwo extends Component {
             />
         </View>
             <View>
-                <Text style = {styles.titleStyle} >{ this.props.data.title }</Text>
-                <Text style = {styles.genreStyle} >{ this.props.data.genre }</Text>
-                <Text style = {styles.descStyle} >{ this.props.data.description }</Text>
+                <Text style = {styles.titleStyle} >{ this.props.item.title }</Text>
+                <Text style = {styles.genreStyle} >{ this.props.item.genre }</Text>
+                <Text style = {styles.descStyle} >{ this.props.item.description }</Text>
             </View>
             <Text style = {styles.episodeStyle} >Coming up next</Text>
+            <View>
             <FlatList 
                 style = {{marginLeft: 14, marginTop: 10, marginRight: 14}} 
                 data = {this.props.episodes}
@@ -46,6 +47,7 @@ class VideoPagetwo extends Component {
                     </View>} 
                 keyExtractor = { (item)  => item.id }
             />
+            </View>
         </View>
     )
     }

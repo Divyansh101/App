@@ -10,27 +10,27 @@ class seeAllPage extends Component {
         this.props.renderEpisodes()
     }
 
-    onPressButton(){
-        Actions.videoPageTwo({ data: this.props })
+    onPressButton(item){
+        Actions.videoPageTwo({ item: item })
     }
 
     render(){
         return( 
-        <View style = {{ backgroundColor: 'white' }} >
+        <View style = {{ flex: 1, backgroundColor: 'white' }} >
             <FlatList 
                 style = {{marginLeft: 14, marginTop: 10, marginRight: 14}} 
                 data = {this.props.episodes}
-                renderItem = { (item) =>
+                renderItem = { ({item}) =>
                     <View style = {{ flexDirection: 'row' }} >
-                        <TouchableOpacity onPress = {this.onPressButton.bind(this)}>
+                        <TouchableOpacity onPress = {this.onPressButton.bind(item)}>
                             <Image 
                                 style = {styles.episodesImageStyle}
-                                source = {{uri: item.item.imageUrl, width: 190, height: 90}} />
+                                source = {{uri: item.imageUrl, width: 190, height: 90}} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress = {this.onPressButton.bind(this)}>
+                        <TouchableOpacity onPress = {this.onPressButton.bind(item)}>
                             <View>
-                                <Text style = { styles.episodeTextStyle } >{ item.item.title }</Text>  
-                                <Text style = {{fontFamily: 'Archivo-Medium', marginTop: 7, marginLeft: 10}} >{ item.item.date }</Text>  
+                                <Text style = { styles.episodeTextStyle } >{ item.title }</Text>  
+                                <Text style = {{fontFamily: 'Archivo-Medium', marginTop: 7, marginLeft: 10}} >{ item.date }</Text>  
                             </View>
                         </TouchableOpacity>
                     </View>} 

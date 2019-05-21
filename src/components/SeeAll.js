@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 
 class SeeAll extends Component {
     onButtonPress(){
+        console.log(this.props.data)
         Actions.seeAllPage({ data: this.props.data })
     }
 
